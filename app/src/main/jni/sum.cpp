@@ -7,7 +7,7 @@
 #include <android/log.h>
 
 // Implementation of native method mysum() of MainActivity class
-void dfs(int n, int vertices, int *nodes, int **adj_mat);
+void dfs(int n, int parent, int vertices, int *nodes, int **adj_mat);
 
 extern "C"
 /**
@@ -67,7 +67,7 @@ void dfs(int n, int parent, int vertices, int *nodes, int **adj_mat) {
     nodes[n]++;
 
     for (int i = 0; i < vertices; i++) {
-        if (adj_mat[i][n] && i != parent) {
+        if (adj_mat[i][n] && n != parent) {
             if (nodes[i]) {
                 nodes[i]++;
                 continue;
