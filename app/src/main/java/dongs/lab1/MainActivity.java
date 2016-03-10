@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
     static {
         System.loadLibrary("mysum"); // Load native library at runtime (mysum.so)
     }
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             case MY_PERMISSIONS_REQUEST_WRITE_SD: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    int vertices = 1000;
+                    int vertices = 10000;
 
                     int[][] adj_mat = intAdjArray(vertices);
 
@@ -104,6 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0; i < vertices; i++){
             for(int j = 0; j < vertices; j++){
+                if(j == vertices/2)
+                {
+                    adjMatrix[i][j] = 1;
+                    continue;
+                }
                 adjMatrix[i][j] = 0;
             }
         }

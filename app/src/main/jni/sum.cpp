@@ -64,7 +64,11 @@ JNIEXPORT jint JNICALL Java_dongs_lab1_MainActivity_mysum(JNIEnv *env, jobject t
  * @returns nothing
  */
 void dfs(int n, int parent, int vertices, int *nodes, int **adj_mat) {
-    nodes[n]++;
+
+    asm volatile("INCb %1;"
+    :"=m"(nodes[n])
+    :"m" (nodes[n])
+    );
 
     for (int i = 0; i < vertices; i++) {
         if (adj_mat[i][n] && n != parent) {

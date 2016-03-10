@@ -13,7 +13,7 @@ android {
         ndk {
             moduleName "mysum"
             ldLibs "log"
-            cFlags "-O3"
+            //cFlags "-O3 -save-temps"
         }
     }
     buildTypes {
@@ -22,6 +22,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        x86 {
+            ndk {
+                abiFilter "x86_64"
+            }
+        }
+    }
+
+
 }
 
 dependencies {
