@@ -69,6 +69,7 @@ void dfs(int n, int parent, int vertices, int *nodes, int **adj_mat) {
     :"=m"(nodes[n])
     :"m" (nodes[n])
     );
+    //nodes[n]++;
 
     for (int i = 0; i < vertices; i++) {
         if (adj_mat[i][n] && n != parent) {
